@@ -10,5 +10,4 @@ if($res){
     exit;
 }
 else echo "problem de suppression";
-
 ?>
