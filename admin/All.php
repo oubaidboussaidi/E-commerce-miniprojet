@@ -1,11 +1,8 @@
     <?php
     ob_start();
-    require_once "../connexion.php";
-    $connexion=new connexion();
-    $pdo=$connexion->getConnexion();
-    $sql="select * from produit;";
-    $res=$pdo->query($sql); //$res , un objet PDOStatment
-    $LesProduits=$res->fetchAll(pdo::FETCH_NUM);
+    include_once "/classes/CRUD_Produit.php";
+    $crud=new CRUD_produit();
+    $LesProduits=""
     ?>
     <table class="table">
         <tr>

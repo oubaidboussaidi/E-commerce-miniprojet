@@ -1,10 +1,10 @@
 <?php
-require_once "../connexion.php";
-$connexion=new connexion();
-$pdo=$connexion->getConnexion();
+
+include_once "/classes/CRUD_Produit.php";
+    
+$crud=new CRUD_produit();
 $id=$_GET['id'];
-$sql="delete from produit where id=$id";
-$res=$pdo->exec($sql);
+$res=$crud->delete($id);
 if($res){
     header("location:all.php");
     exit;
