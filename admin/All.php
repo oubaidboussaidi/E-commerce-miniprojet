@@ -26,7 +26,7 @@
             <td><?=$produit[3]?></td>
             <td><a href="detail.php?id=<?=$produit[0]?>" class="btn btn-info btn-sn">Voir detail...</a></td>
             <td><a href="Delete.php?id=<?=$produit[0]?>" class="btn btn-danger btn-sn">Supprimer</a></td>
-            <td><a href="update.php?id=<?=$produit[0]?>" class="btn btn-info btn-sn">Editer</a></td>
+            <td><a href="update.php?id=<?=$produit[0]?>" class="btn btn-dark btn-sn">Editer</a></td>
         </tr>
         <?php
         }
