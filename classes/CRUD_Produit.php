@@ -7,7 +7,8 @@ class CRUD_Produit {
         $this->pdo=$connexion->getConnexion();
 
     }
-    function  add(){}
+    function  add(){
+            }
     function  delete($id){
         $sql="delete from produit where id=$id";
         $res=$this->pdo->exec($sql);

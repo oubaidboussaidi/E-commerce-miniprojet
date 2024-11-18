@@ -1,27 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+ob_start();
+?>
+<form action="" method="post">
+    <label for="">libelle</label><input type="text" name="lib" id="" class="form-control"><br>
+    <label for="">prix</label><input type="text" name="pu" id="" class="form-control"><br>
+    <label for="">prix</label><input type="text" name="pu" id="" class="form-control"><br>
+    <label for="">quantité</label><input type="text" name="qte" id="" class="form-control"><br>
+    <label for="">description</label><textarea name="des" id="" class="form-control"></textarea><br>
+    <label for="">danger</label><input type="text" name="img" id="" class="form-control"><br>
+    <label for="">en promo</label><input type="text" name="pro" value="0" id="" class="form-control"><br>
+    <input type="submit" value="ajouter" name="ok">
+</form>
+<?php
+    
+    require_once "../classes/CRUD_Produit.php";
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <?php
-    require_once "../connexion.php";
-    $sql = "INSERT INTO  produit 
-    VALUES (NULL, 'cable vga',1, 200, 'Lorem ipsum 
-    dolor sit amet consectetur adipisicing elit. Architecto 
-    laboriosam cum possimus quod assumenda
-     nihil cupiditate error, repudiandae ipsum neque.',
-      'https://picsum.photos/images/200/200', 0)";
-    $connexion = new connexion();
-    $pdo = $connexion->getConnexion();
-
+    if (isset($_POST['ok'])){
+    $crud=new CRUD_produit();
+    //$produit=new produit();
+    
+    $res=$crud->add($id);
     $res = $pdo->exec($sql);
-    ?>
+    if($res){
+        header("location:all.php");
+        exit;
+    }
+    else echo "pb d'insertion";
+}
+        $contenu=ob_get_clean();
+        $titre="Liste des produits";
+        include "layout.php"
 
-</body>
-
-</html>
+?>

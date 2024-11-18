@@ -1,6 +1,6 @@
 <?php
 
-include_once "/classes/CRUD_Produit.php";
+require_once "/classes/CRUD_Produit.php";
     
 $crud=new CRUD_produit();
 $id=$_GET['id'];
