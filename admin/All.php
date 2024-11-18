@@ -1,23 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
     <?php
+    ob_start();
     require_once "../connexion.php";
     $connexion=new connexion();
     $pdo=$connexion->getConnexion();
     $sql="select * from produit;";
     $res=$pdo->query($sql); //$res , un objet PDOStatment
     $LesProduits=$res->fetchAll(pdo::FETCH_NUM);
-    echo "<pre>";
-    var_dump($LesProduits);
-    echo "<pre>";
     ?>
+    <table class="table">
+        <tr>
+            <th>identifiant</th>
+            <th>libellé</th>
+            <th>prix</th>
+            <th>QTE</th>
+            <th colspan="3">action</th>
+        </tr>
+        <?php 
+        foreach ($LesProduits as $produit) {
+        
+        ?>
+        <tr>
+            <td><?=$produit[0]?></td>
+            <td><?=$produit[1]?></td>
+            <td><?=$produit[2]?></td>
+            <td><?=$produit[3]?></td>
+            <td><a href="detail.php?id=<?=$produit[0]?>" class="btn btn-info btn-sn">Voir detail...</a></td>
+            <td><a href="Delete.php?id=<?=$produit[0]?>" class="btn btn-danger btn-sn">Supprimer</a></td>
+            <td><a href="update.php?id=<?=$produit[0]?>" class="btn btn-info btn-sn">Editer</a></td>
+        </tr>
+        <?php
+        }
+        ?>
+        
+    </table>
 
-</body>
-</html>
+    <?php
+        $contenu=ob_get_clean();
+        $titre="Liste des produits";
+        include "layout.php"
+    ?>
