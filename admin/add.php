@@ -19,7 +19,6 @@
     $connexion = new connexion();
     $pdo = $connexion->getConnexion();
 
-    //envoi de la requete sql
     $res = $pdo->exec($sql);
     ?>
 

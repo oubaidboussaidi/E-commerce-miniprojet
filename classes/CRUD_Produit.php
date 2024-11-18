@@ -1,4 +1,5 @@
 <?php
+include_once "produit.php";
 class CRUD_Produit {
     private $pdo;
     function  __construct() {}
